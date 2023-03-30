@@ -1,0 +1,60 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  application:
+    name: DemoApplication
+
+  datasource:
+    username: root
+    password: '@kailash'
+    url: jdbc:mysql://localhost:3306/splitwork
+    driver-class-name: com.mysql.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  application:
+    name: DemoApplication
+
+  datasource:
+    username: root
+    password: '@kailash'
+    url: jdbc:mysql://localhost:3306/splitwork-dev
+    driver-class-name: com.mysql.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  application:
+    name: DemoApplication
+
+  datasource:
+    username: root
+    password: '@kailash'
+    url: jdbc:mysql://localhost:3306/splitwork-test
+    driver-class-name: com.mysql.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
